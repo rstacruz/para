@@ -3,6 +3,10 @@
 
 *Note: this is a proof-of-concept project and was never envisioned to be used in production.*
 
+Para is a simple test framework with one killer feature: your tests will be 
+ran in parallel. This example below will have all tests take place 
+simultaneously.
+
 ``` ruby
 # mytest.rb
 require 'para'
@@ -50,7 +54,7 @@ Run:
 
 To run with a maximum of 3 threads:
 
-    THREADS=3 mytest.rb
+    $ THREADS=3 ruby mytest.rb
 
 Each test will be ran in a different thread. To find out which thread you're 
 on, use `#thread`.
