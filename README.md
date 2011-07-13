@@ -91,6 +91,10 @@ end
  * `.should.throw(symbol)`
  * `.should.satisfy { ... }`
 
+You can negate a test by adding `.not`. (eg: `.should.not.be.nil`)
+
+You can add `.be`, `.a`, and `.an` -- they do nothing. (eg: `.should.be.equal` is the same as `.should.equal`)
+
 ## Test::Unit-style assertions
 
 Minitest/Test::Unit assertions are also supported.
