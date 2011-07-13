@@ -15,6 +15,9 @@ class Para::Test
     refute left == right, msg || "#{q left} is equal to #{q right}."
   end
 
+  alias assert_not_equal refute_equal
+  alias refute_not_equal assert_equal
+
   def assert_match(regex, str, msg=nil)
     assert str =~ regex, msg || "#{q str} does not match #{q regex}."
   end
@@ -22,6 +25,9 @@ class Para::Test
   def refute_match(regex, str, msg=nil)
     refute str =~ regex, msg || "#{q str} matches #{q regex}."
   end
+
+  alias assert_no_match refute_match
+  alias refute_no_match assert_match
 
   def assert_includes(haystack, needle, msg=nil)
     assert haystack.include?(needle), msg || "#{q haystack} does not include #{q needle}."
@@ -55,6 +61,9 @@ class Para::Test
     refute what.nil?, msg || "#{q what} is nil."
   end
 
+  alias assert_not_nil refute_nil
+  alias refute_not_nil assert_nil
+
   def assert_same(left, right, msg=nil)
     assert left === right, msg || "#{q left} is not the same as #{q right}."
   end
@@ -62,6 +71,9 @@ class Para::Test
   def refute_same(left, right, msg=nil)
     refute left === right, msg || "#{q left} is the same as #{q right}."
   end
+
+  alias assert_not_same refute_same
+  alias refute_not_same assert_same
 
   def assert_respond_to(what, method, msg=nil)
     assert what.respond_to?(method), msg || "#{q what} does not respond to #{q method}."

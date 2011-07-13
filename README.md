@@ -122,6 +122,9 @@ end
 * `assert_nothing_thrown`
 * `assert_block`
 
+If you replace `assert` with `refute` (eg, `refute_nil`), it will work in 
+reverse.
+
 ## Test::Unit-style tests
 
 You can also define tests by making a method that starts with `test_`.
@@ -165,6 +168,7 @@ class MyTest < ParaTest
     end
   end
 end
+```
 
 ## Acknowledgements
 
