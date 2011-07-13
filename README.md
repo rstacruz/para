@@ -61,6 +61,8 @@ To run with a maximum of 3 threads:
 
     $ THREADS=3 ruby mytest.rb
 
+## Thread management
+
 Each test will be ran in a different thread. To find out which thread you're 
 on, use `#thread`.
 
