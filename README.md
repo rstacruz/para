@@ -20,18 +20,20 @@ class MyTest < Para::Test
     3.should == 3
     100.should >= 3
     @nothing.should.be.nil
+    sleep 1          # <-- stop for 1 second!
   end
 
   test "arrays" do
     %w[2 3 4].should.be.kind_of(Array)
+    sleep 1          # <-- stop for 1 second!
   end
 
   test "failure" do
-    3.should == 4    # this will fail
+    3.should == 4    # <-- this will fail
   end
 
   test "error" do
-    100 / 0          # this will produce an error
+    100 / 0          # <-- this will produce an error
   end
 end
 ```
@@ -49,8 +51,11 @@ Run:
       mytest.rb:24:in `/'
       mytest.rb:24:in `test_failure'
 
-    Finished in 0.00204 seconds.
+    Finished in 1.00204 seconds.
     5 assertions, 4 passed, 1 failures, 1 errors
+
+Notice how it takes **1** second to run. It should otherwise take **2** 
+seconds in another testing framework (notice the two `sleep`s in the code).
 
 To run with a maximum of 3 threads:
 
