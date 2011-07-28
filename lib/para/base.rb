@@ -6,14 +6,31 @@ module Para
     def printer()         @printer ||= Printer.new; end
 
     # Worker
-    def worker!(q, i)     while q.any?; run_test i, *q.shift; end; end
+    def worker!(q, i)
+      if i == 0
+        # For the first thread, just take the next test.
+        while q.any?
+          run_test i, *q.shift
+        end
+      else
+        # For other threads, only work on the ones that are enabled for parallel.
+        while true
+          test = q.detect { |(testcase, _)| testcase.parallel? } or break
+          q.delete test
+          run_test i, *test
+        end
+      end
+    end
 
     # Spawn multiple threads, each doing #work!
     def start!
       Signal.trap("INT") { printer.done; exit }
 
       queue = Test.all_tests
-      thread_count.times.map { |i| Thread.new { worker!(queue, i) } }.each { |t| t.join }
+      threads = (thread_count-1).times.map { |i| Thread.new { worker!(queue, i+1) } }
+
+      worker!(queue, 0)
+      threads.join
 
       printer.done
     end
@@ -45,6 +62,10 @@ module Para
     # Stubs for teardown/setup
     def teardown(); end
     def setup(); end
+
+    def self.enable_parallel()  @parallel = true; end
+    def self.disable_parallel() @parallel = false; end
+    def self.parallel?()        !! @parallel; end
 
     def assert(what, msg=nil)
       if what

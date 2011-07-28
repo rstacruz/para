@@ -31,7 +31,7 @@ class Foo < Para::Test
   end
 
   def test_inc_test
-    assert_includes %w[a b c], 'd'
+    assert_include %w[a b c], 'd'
   end
 
   def test_equal
