@@ -76,12 +76,12 @@ class REnvyTest < Para::Test
   end
 
   def test_include
-    expects(:assert_includes).with([], 2, nil)
+    expects(:assert_include).with([], 2, nil)
     [].should.include 2
   end
 
   def test_include_not
-    expects(:refute_includes).with([], 2, nil)
+    expects(:refute_include).with([], 2, nil)
     [].should.not.include 2
   end
 
