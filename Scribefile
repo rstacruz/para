@@ -1,0 +1,8 @@
+manual: 'manual'
+
+files:
+- source: "lib/**/*.rb"
+
+output: doc
+
+github: rstacruz/para
