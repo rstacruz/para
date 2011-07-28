@@ -2,7 +2,7 @@
 
 module Para
   class Runner
-    def thread_count()    (ENV['THREADS'] || 3).to_i; end
+    def thread_count()    (ENV['THREADS'] || 1).to_i; end
     def printer()         @printer ||= Printer.new; end
 
     # Worker

@@ -58,7 +58,7 @@ module Para
     def <(right)              assert_or_refute :operator, left, :<,  right; end
     def >=(right)             assert_or_refute :operator, left, :>=, right; end
     def <=(right)             assert_or_refute :operator, left, :<=, right; end
-    def include(right)        assert_or_refute :includes, left, right; end
+    def include(right)        assert_or_refute :include, left, right; end
     def instance_of(right)    assert_or_refute :instance_of, right, left; end
     def kind_of(right)        assert_or_refute :kind_of, right, left; end
     def nil()                 assert_or_refute :nil, left; end

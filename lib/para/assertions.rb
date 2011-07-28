@@ -29,11 +29,11 @@ class Para::Test
   alias assert_no_match refute_match
   alias refute_no_match assert_match
 
-  def assert_includes(haystack, needle, msg=nil)
+  def assert_include(haystack, needle, msg=nil)
     assert haystack.include?(needle), msg || "#{q haystack} does not include #{q needle}."
   end
 
-  def refute_includes(haystack, needle, msg=nil)
+  def refute_include(haystack, needle, msg=nil)
     refute haystack.include?(needle), msg || "#{q haystack} includes #{q needle}."
   end
 
