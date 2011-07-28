@@ -76,6 +76,16 @@ class MyTest < Para::Test
 end
 ```
 
+## Test::Unit backward compatibility
+
+Migrate your current tests to Para by changing `require test/unit` to:
+
+``` ruby
+require 'para/test/unit'
+```
+
+This will give you `Test::Unit::TestCase`.
+
 ## RSpec-style assertions
 
 More RSpec-like assertions are supported.
@@ -121,6 +131,7 @@ end
 * `assert_not_same`
 * `assert_nil`
 * `assert_not_nil`
+* `assert_include`
 * `assert_in_delta`
 * `assert_match`
 * `assert_no_match`
